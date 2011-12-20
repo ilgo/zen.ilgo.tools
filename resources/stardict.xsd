@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://star.ilgo.zen/star" elementFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:star="http://star.ilgo.zen/star">
+
+	<element name="Dictionary">
+	    <complexType>
+	    	<sequence>
+				<element name="Meta" type="star:Meta" maxOccurs="1" minOccurs="1"/>
+ 				<element name="Entries" type="star:Entries" minOccurs="1" maxOccurs="1"/>
+	    	</sequence>
+	    </complexType>
+    </element>
+    
+	<complexType name="Meta">
+    	<attribute name="bookname" type="string" use="required"/>
+    	<attribute name="author" type="string" use="required"/>
+    	<attribute name="email" type="string" use="required"/>
+    	<attribute name="website" type="string" use="required"/>
+    	<attribute name="description" type="string" use="required"/>
+    	<attribute name="date" type="date" use="optional"/>
+    </complexType>
+
+	<complexType name ="Entries">
+		<sequence>
+			<element name="Entry" type="star:Entry" minOccurs="1" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Entry">
+		<sequence>
+			<element name="Definition" type="string" maxOccurs="1" minOccurs="1"/>
+			<element name="Key" type="string" minOccurs="1" maxOccurs="unbounded"/>			    						
+		</sequence>
+	</complexType>
+
+</schema>

@@ -1,0 +1,6 @@
+1. Data in ifo and Meta transformation
+2. setting the default ns: to star: when writing to xml
+3. Existing dictionaries that do not use syn files. 
+4. bookname and ifofile constructor. 
+5. zipped dict and idx files.
+

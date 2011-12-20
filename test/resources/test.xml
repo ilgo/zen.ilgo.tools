@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<star:Dictionary xmlns:star="http://star.ilgo.zen/star" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://star.ilgo.zen/star ../../resources/stardict.xsd ">
+  <Meta author="ilgo" bookname="testDict" description="a simple dict for test" email="ilgo711@gmail.com" website="www.metta.lk"/>
+  <Entries>
+    <Entry>
+      <Definition>[nt.] : water.</Definition>
+      <Key>daka</Key>
+    </Entry>
+    <Entry>
+      <Definition>수; SHUI3; 水.0.4; water, liquid, lot5on, juice water, river</Definition>
+      <Key>水</Key>
+      <Key>su</Key>
+      <Key>mul</Key>
+    </Entry>
+  </Entries>
+</star:Dictionary>

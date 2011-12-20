@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="mytools" default="build.jar" basedir=".">
+	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
+	<!--ANT 1.7 is required                                        -->
+
+	<property name="rpmbuild" location="/home/ilgo/rpmbuild" />
+	<property name="version" value="1.0" />
+	<property name="tarname" value="mytools" />
+	<property name="srctar" value="${tarname}-${version}.tar.gz" />
+	<property name="tardir" value="${tarname}-${version}" />
+	
+	<property name="java.lib.dir" value="/usr/share/java" />
+	
+
+	<target name="build RPM package">
+
+		<tar destfile="${srctar}" compression="gzip">
+			<tarfileset dir="./" prefix="${tarname}-${version}">
+				<include name="**/*.java" />
+				<include name="**/src/log4j.properties" />
+				<exclude name="**/test/**/*.java" />
+			</tarfileset>
+		</tar>
+
+		<move file="${srctar}" todir="${rpmbuild}/SOURCES" />
+		<copy file="${tarname}.spec" todir="${rpmbuild}/SPECS" />
+
+		<delete includeemptydirs="true">
+			<fileset dir="${rpmbuild}/BUILD" includes="**/*" />
+			<fileset dir="${rpmbuild}/BUILDROOT" includes="**/*" />
+		</delete>
+
+		<rpm specFile="${tarname}.spec" topDir="${rpmbuild}" command="-ba" cleanBuildDir="true" failOnError="true" />
+	</target >
+	
+	<target name="build.jar">
+		<delete file="${java.lib.dir}/mytools.jar" />
+		<copy file="resources/stardict.xsd" todir="bin/resources"/>
+		<jar destfile="${java.lib.dir}/mytools.jar" 
+			basedir="bin"
+			includes="**/zen/ilgo/**/*.class log4j.properties resources/*.xsd"
+			excludes="**/*Test*.class **/test/* **/*Test/** **/*Suite.class **/*.ods"
+		/>		
+	</target>
+	
+	<property name="xjc.bin" value="/usr/bin/xjc" />
+	<property name="src.dir" value="./src"/>
+	<property name="target.pkg" value="zen.ilgo.star.xml"/>
+	<property name="star.xsd" value="./resources/stardict.xsd" />
+	
+	<!-- create the JAXB classes from the stardict.xsd
+	     target is src/zen/ilgo/star/xml
+	-->
+	<target name="star.xjc">
+		<exec executable="${xjc.bin}">
+		    <arg value="-d"/>
+		    <arg value="${src.dir}"/>
+		    <arg value="-p"/>
+		    <arg value="${target.pkg}"/>
+		    <arg value="-verbose"/>
+		    <arg value="${star.xsd}"/>
+		</exec>	
+	</target>
+
+</project>
