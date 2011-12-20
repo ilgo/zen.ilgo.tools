@@ -1,0 +1,11 @@
+zen.ilgo.tools
+--------------
+
+A Collection of java utilities and tools
+
+1. zen.ilgo.cat         - a 'cat' implementation
+2. zen.ilgo.pipeline    - a framework to run a tasks in parallel
+3. zen.ilgo.star        - creating binary stardicts from xml files
+4. zen.ilgo.utils       - contains a StringBuilder with 'replace' methods
+5. zen.ilgo.wget        - a 'wget' implementation
+
